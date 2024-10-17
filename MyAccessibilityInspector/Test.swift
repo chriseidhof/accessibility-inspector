@@ -108,7 +108,9 @@ extension AXUIElement {
 }
 
 extension AXUIElement: @retroactive Identifiable {
-    public var id: ObjectIdentifier { ObjectIdentifier(self) }
+    public var id: ObjectIdentifier {
+        ObjectIdentifier(self)
+    }
 }
 
 func printTree<T>(node: T, children childrenFn: (T) -> [T]?, indent: String = "", getValueString: (T) -> String) {

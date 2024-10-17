@@ -1,6 +1,7 @@
 //
 
 import SwiftUI
+import CoreServices
 
 struct ContentView: View {
     @State var myValue = 0
@@ -25,7 +26,7 @@ struct ContentView: View {
             .padding()
             .frame(maxWidth: .infinity)
             List(element == nil ? [] : [element!], children: \.children) { element in
-                VStack {
+                VStack(alignment: .leading) {
                     HStack {
                         ForEach(element.actionNames, id: \.self) { name in
                             Button(name) {
@@ -37,9 +38,11 @@ struct ContentView: View {
                         LabeledContent(key) {
                             if let v = value as? String {
                                 Text(verbatim: v)
+                                    .monospaced()
                                     .foregroundStyle(Color.accentColor)
                             } else {
                                 Text(verbatim: "\(value)")
+                                    .monospaced()
                             }
                         }
                     }
